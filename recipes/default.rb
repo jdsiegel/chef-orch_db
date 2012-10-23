@@ -3,7 +3,7 @@ include_recipe "database"
 postgres_info = { :host => "localhost", :username => 'postgres', :password => node['postgresql']['password']['postgres'] }
 mysql_info = { :host => "localhost", :username => 'root', :password => node['mysql']['server_root_password'] }
 
-type = node['squeel']['db_type'] || "postgres"
+type = node['orch_db']['db_type'] || "postgres"
 if type == "postgres"
   db_provider = Chef::Provider::Database::Postgresql
   user_provider = Chef::Provider::Database::PostgresqlUser
@@ -19,7 +19,7 @@ else
   conn_info = mysql_info
 end
 
-node['squeel']['databases'].each do |hash|
+node['orch_db']['databases'].each do |hash|
   name = hash['name']
   user = hash['user']
   pass = hash['password']

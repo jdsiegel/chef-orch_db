@@ -1,7 +1,7 @@
 Description
 ===========
 
-Squeel is a simple cookbook for setting up databases with a primary
+orch\_web is a simple cookbook for setting up databases with a primary
 user/role. It uses the resources from the
 [database](https://github.com/opscode-cookbooks/database) cookbook for
 configuration.
@@ -39,7 +39,7 @@ This cookbook depends on the following external cookbook:
 Attributes
 ==========
 
-### db_type
+### db\_type
 
 The specific database system to install. Either "postgres" or "mysql".
 Defaults to "postgres".
@@ -56,8 +56,8 @@ following:
 Usage
 =====
 
-* Add recipe[squeel] to the run_list for your database node and set the
-  db_type and database attributes
+* Add recipe[orch\_db] to the run list for your database node and set the
+  db\_type and database attributes
 
 License and Author
 ==================

@@ -5,8 +5,7 @@ platform :ubuntu do
   end
 end
 
-cookbook "chef-bloo" do
+cookbook "orch_db" do
   configuration "postgres"
   configuration "mysql"
-  #runtimes [nil]
 end

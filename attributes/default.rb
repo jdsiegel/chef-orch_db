@@ -1,1 +1,1 @@
-default['bloo']['databases'] = []
+default['orch_db']['databases'] = []
