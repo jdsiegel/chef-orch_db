@@ -1,0 +1,31 @@
+---
+driver_plugin: vagrant
+
+platforms:
+- name: ubuntu-12.04
+  driver_config:
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box
+  run_list:
+  - recipe[apt]
+
+suites:
+- name: mysql
+  run_list:
+  - recipe[platform_packages]
+  - recipe[setup::mysql]
+  - recipe[orch_db]
+  attributes:
+    platform_packages:
+      pkgs:
+        - name: curl
+
+- name: postgres
+  run_list:
+  - recipe[platform_packages]
+  - recipe[setup::postgres]
+  - recipe[orch_db]
+  attributes:
+    platform_packages:
+      pkgs:
+        - name: curl
