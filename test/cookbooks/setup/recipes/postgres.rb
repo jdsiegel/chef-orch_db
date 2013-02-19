@@ -6,6 +6,3 @@ node.override['orch_db']['databases'] = [
   }
 ]
 node.override['orch_db']['db_type'] = 'postgres'
-
-include_recipe "postgresql::ruby"
-include_recipe "postgresql::server"

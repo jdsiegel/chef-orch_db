@@ -5,10 +5,14 @@ mysql_info = { :host => "localhost", :username => 'root', :password => node['mys
 
 type = node['orch_db']['db_type'] || "postgres"
 if type == "postgres"
+  include_recipe "postgresql::ruby"
+  include_recipe "postgresql::server"
+
   db_provider = Chef::Provider::Database::Postgresql
   user_provider = Chef::Provider::Database::PostgresqlUser
   conn_info = postgres_info
 else
+  include_recipe "mysql::server"
 
   gem_package "mysql" do
     action :install

@@ -6,5 +6,3 @@ node.override['orch_db']['databases'] = [
   }
 ]
 node.override['orch_db']['db_type'] = 'mysql'
-
-include_recipe "mysql::server"
