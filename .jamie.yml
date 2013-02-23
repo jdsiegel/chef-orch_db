@@ -23,11 +23,11 @@ suites:
       server_repl_password: 'flargle'
       server_debian_password: 'flargle'
     orch_db:
-      db_type: mysql
       databases:
         - name: myapp
           user: tekh
           password: snargles
+          type: mysql
 
 - name: postgres
   run_list:
@@ -41,8 +41,34 @@ suites:
       password:
         postgres: 'flargle'
     orch_db:
-      db_type: postgres
       databases:
         - name: myapp
           user: tekh
           password: snargles
+          type: postgres
+
+- name: both
+  run_list:
+  - recipe[platform_packages]
+  - recipe[orch_db]
+  attributes:
+    platform_packages:
+      pkgs:
+        - name: curl
+    mysql:
+      server_root_password: 'flargle'
+      server_repl_password: 'flargle'
+      server_debian_password: 'flargle'
+    postgresql:
+      password:
+        postgres: 'flargle'
+    orch_db:
+      databases:
+        - name: pg_db
+          user: pg_user
+          password: snargles1
+          type: postgres
+        - name: mysql_db
+          user: mysql_user
+          password: snargles2
+          type: mysql
