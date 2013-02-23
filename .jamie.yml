@@ -13,19 +13,36 @@ suites:
 - name: mysql
   run_list:
   - recipe[platform_packages]
-  - recipe[setup::mysql]
   - recipe[orch_db]
   attributes:
     platform_packages:
       pkgs:
         - name: curl
+    mysql:
+      server_root_password: 'flargle'
+      server_repl_password: 'flargle'
+      server_debian_password: 'flargle'
+    orch_db:
+      db_type: mysql
+      databases:
+        - name: myapp
+          user: tekh
+          password: snargles
 
 - name: postgres
   run_list:
   - recipe[platform_packages]
-  - recipe[setup::postgres]
   - recipe[orch_db]
   attributes:
     platform_packages:
       pkgs:
         - name: curl
+    postgresql:
+      password:
+        postgres: 'flargle'
+    orch_db:
+      db_type: postgres
+      databases:
+        - name: myapp
+          user: tekh
+          password: snargles
