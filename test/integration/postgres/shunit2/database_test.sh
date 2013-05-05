@@ -11,7 +11,7 @@ run_sql()
 
 test_database_exists()
 {
-  run_sql <<<exit
+  run_sql <<<'\q'
   assertTrue "unable to connect to $database database" $?
 }
 
