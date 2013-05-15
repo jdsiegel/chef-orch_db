@@ -34,11 +34,8 @@ module OrchDb
     end
 
     def setup
+      recipe.include_recipe "mysql::ruby"
       recipe.include_recipe "mysql::server"
-
-      recipe.gem_package "mysql" do
-        action :install
-      end
     end
   end
 
